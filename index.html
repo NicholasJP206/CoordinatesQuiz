@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>座標当てゲーム</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+    #coordinates {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+			user-drag: none;
+			-webkit-user-drag: none;
+			-moz-user-select: none;
+    }
+
+    #rd-button {
+      position: relative;
+      top: 0;
+			right: 0;
+			display: none;
+      padding: 10px;
+      display: none;
+      border: none;
+      cursor: pointer;
+    }
+    #ok-button {
+      position: relative;
+      top: 0;
+			right: 0;
+			display: none;
+      padding: 10px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #ok-button:hover {
+      background-color: #d32f2f;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+		<h2 id="randomData"></h2>
+		<h2 id="message">この建物の座標はどこでしょう？</h2>
+    <div id="coordinates"></div>
+    <img id="map" src="map.png" alt="マップ">
+		<button id="ok-button">特定した！</button>
+		<br>
+		<button id="rd-button" onclick="getRandomElement()">もういちど</button>
+
+  <script>
+		var Tx,Ty;
+    function getRandomElement() {
+      fetch('coords.json') 
+
+			.then(response => response.json())
+				.then(jsonList => {
+					var length = jsonList.length;
+					var randomIndex = Math.floor(Math.random() * length);
+					var randomElement = jsonList[randomIndex];
+					document.getElementById("randomData").innerHTML = randomElement.place;
+					Tx = randomElement.x;
+					Ty = randomElement.z;
+				})
+				.catch(error => {
+				console.error('Error:', error);
+			});
+		}
+		window.onload = getRandomElement;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var coordinatesElement = document.getElementById('coordinates');
+      var mapElement = document.getElementById('map');
+			var Message = document.getElementById('message');
+			var okButton = document.getElementById('ok-button');
+			var rdButton = document.getElementById('rd-button');
+
+			var x,y;
+    mapElement.addEventListener('click', function(event) {
+    var rect = mapElement.getBoundingClientRect();
+    var containerWidth = rect.width;
+    var containerHeight = rect.height;
+    x = Math.floor((event.clientX - rect.left) / containerWidth * 512) - 448;
+    y = Math.floor((event.clientY - rect.top) / containerHeight * 512) - 704;
+    if (x >= -448 && x <= 64 && y >= -704 && y <= -192) {
+        coordinatesElement.textContent = 'X座標: ' + x + ', Z座標: ' + y;
+        Message.classList.add('hidden');
+        okButton.style.display = 'block';
+
+        }
+    });
+			
+		okButton.addEventListener('click', function() {
+        var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
+        alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
+        rdButton.style.display = 'block';
+      });
+    });
+
+  </script>
+</body>
+</html>
