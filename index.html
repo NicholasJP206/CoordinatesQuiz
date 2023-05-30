@@ -18,10 +18,7 @@
     }
 
     #map {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+			margin: 0 auto;
 			user-drag: none;
 			-webkit-user-drag: none;
 			-moz-user-select: none;
@@ -29,8 +26,8 @@
 
     #rd-button {
       position: relative;
-      top: 0;
-			right: 0;
+			left : 50%;
+			transform: translateX(-50%);
 			display: none;
       padding: 10px;
       display: none;
@@ -39,8 +36,8 @@
     }
     #ok-button {
       position: relative;
-      top: 0;
-			right: 0;
+			left : 50%;
+			transform: translateX(-50%);
 			display: none;
       padding: 10px;
       background-color: #f44336;
@@ -48,26 +45,32 @@
       border: none;
       cursor: pointer;
     }
-
+		
     #ok-button:hover {
-      background-color: #d32f2f;
+			background-color: #d32f2f;
     }
+		#container {
+      text-align: center;
 
+		}
+		
     .hidden {
       display: none;
     }
   </style>
 </head>
 <body>
+	
+	<div id="container">
+		<img id="map" src="map.png" alt="マップ">
 
 		<h2 id="randomData"></h2>
 		<h2 id="message">この建物の座標はどこでしょう？</h2>
-    <div id="coordinates"></div>
-    <img id="map" src="map.png" alt="マップ">
+		<div id="coordinates"></div>
 		<button id="ok-button">特定した！</button>
 		<br>
 		<button id="rd-button" onclick="getRandomElement()">次の問題へ</button>
-
+	</div>
   <script>
 		var Tx,Ty;
     function getRandomElement() {
