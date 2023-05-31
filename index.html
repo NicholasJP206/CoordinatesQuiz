@@ -66,6 +66,7 @@
     }
     .circle {
       position: absolute;
+      transform: translateX(-50% -50%);
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -180,8 +181,8 @@
       starElement = document.createElement('div');
       starElement.classList.add('star');
       starElement.style.borderRadius = 10 + '%';
-      starElement.style.left = ((Number(Tx) + 448) / 512 * rect.width - 5) + 'px';
-      starElement.style.top = ((Number(Ty) + 704) / 512 * rect.height - 5) + 'px';
+      starElement.style.left = ((Number(Tx) + 448) / 512 * rect.width) + 'px';
+      starElement.style.top = ((Number(Ty) + 704) / 512 * rect.height) + 'px';
       container.appendChild(starElement);
       setTimeout(function() {
 
