@@ -127,8 +127,8 @@
       var TruecircleElement = document.createElement('div');
 
       
+      var rect = mapElement.getBoundingClientRect();
       document.addEventListener('click', function(event) {
-        var rect = mapElement.getBoundingClientRect();
         var containerWidth = rect.width;
         var containerHeight = rect.height;
         x = Math.floor((event.clientX - rect.left) / containerWidth * 512) - 448;
