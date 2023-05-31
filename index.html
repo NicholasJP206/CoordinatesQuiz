@@ -183,6 +183,14 @@
       starElement.style.left = ((Number(Tx) + 448 - 14) / 512 * rect.width  ) + 'px';
       starElement.style.top = ((Number(Ty) + 704 - 5) / 512 * rect.height ) + 'px';
       container.appendChild(starElement);
+      if (circleElement) {
+          circleElement.remove();
+      }
+      circleElement.classList.add('circle');
+      circleElement.style.left = (event.clientX - 5 - rect.left) + 'px'; /* 変更: マップ要素の位置を考慮する */
+      circleElement.style.top = (event.clientY - 5 - rect.top) + 'px'; /* 変更: マップ要素の位置を考慮する */
+      container.appendChild(circleElement);
+
       setTimeout(function() {
 
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
