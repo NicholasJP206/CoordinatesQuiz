@@ -143,6 +143,12 @@
       var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
         rdButton.style.display = 'block';
+        var blueCircleElement = document.createElement('div');
+        blueCircleElement.classList.add('circle');
+        blueCircleElement.style.backgroundColor = 'blue';
+        blueCircleElement.style.left = (Tx + 448 - 5) + 'px';
+        blueCircleElement.style.top = (Ty + 704 - 5) + 'px';
+        container.appendChild(blueCircleElement);
       });
     });
 
