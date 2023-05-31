@@ -18,6 +18,8 @@
     }
 
     #map {
+      position: relative; /* 追加: マップを相対的な位置に設定する */
+
 			margin: 0 auto;
 			user-drag: none;
 			-webkit-user-drag: none;
@@ -25,9 +27,10 @@
     }
 
     #rd-button {
-      position: relative;
-			left : 50%;
-			transform: translateX(-50%);
+      position: relative; /* 追加 */
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
 			display: none;
       padding: 10px;
       display: none;
@@ -35,9 +38,10 @@
       cursor: pointer;
     }
     #ok-button {
-      position: relative;
-			left : 50%;
-			transform: translateX(-50%);
+      position: relative; /* 追加 */
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
 			display: none;
       padding: 10px;
       background-color: #f44336;
@@ -51,11 +55,21 @@
     }
 		#container {
       text-align: center;
+      position: relative; /* 追加 */
+      justify-content: center; /* 追加 */
+      justify-content: space-between; /* 追加 */
 
 		}
 		
     .hidden {
       display: none;
+    }
+    .circle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: red;
     }
   </style>
 </head>
@@ -72,6 +86,7 @@
 		<button id="rd-button" onclick="getRandomElement()">次の問題へ</button>
 	</div>
   <script>
+    var x,y;
 		var Tx,Ty;
     function getRandomElement() {
       fetch('coords.json') 
@@ -88,6 +103,9 @@
 				.catch(error => {
 				console.error('Error:', error);
 			});
+      if (circleElement) {
+          circleElement.remove();
+      }
 		}
 		window.onload = getRandomElement;
 
@@ -97,8 +115,9 @@
 			var Message = document.getElementById('message');
 			var okButton = document.getElementById('ok-button');
 			var rdButton = document.getElementById('rd-button');
+      var container = document.getElementById('container');
+      var circleElement = document.createElement('div');
 
-			var x,y;
     mapElement.addEventListener('click', function(event) {
     var rect = mapElement.getBoundingClientRect();
     var containerWidth = rect.width;
@@ -109,7 +128,13 @@
         coordinatesElement.textContent = 'X座標: ' + x + ', Z座標: ' + y;
         Message.classList.add('hidden');
         okButton.style.display = 'block';
-
+        if (circleElement) {
+          circleElement.remove();
+        }
+          circleElement.classList.add('circle');
+          circleElement.style.left = (event.clientX - 5 - rect.left) + 'px'; /* 変更: マップ要素の位置を考慮する */
+          circleElement.style.top = (event.clientY - 5 - rect.top) + 'px'; /* 変更: マップ要素の位置を考慮する */
+          container.appendChild(circleElement);
         }
     });
 			
