@@ -71,13 +71,6 @@
       border-radius: 50%;
       background-color: red;
     }
-    .Truecircle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 20%;
-      background-color: blue;
-    }
   </style>
 </head>
 <body>
@@ -124,7 +117,6 @@
 			var rdButton = document.getElementById('rd-button');
       var container = document.getElementById('container');
       var circleElement = document.createElement('div');
-      var TruecircleElement = document.createElement('div');
 
       var rect;
       document.addEventListener('click', function(event) {
@@ -151,10 +143,6 @@
       var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
         rdButton.style.display = 'block';
-        TruecircleElement.classList.add('Truecircle');
-        TruecircleElement.style.left = (rect.left + Tx + 448) + 'px';
-        TruecircleElement.style.top = (rect.top + Ty + 704) + 'px';
-        container.appendChild(TruecircleElement);
       });
     });
 
