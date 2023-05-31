@@ -131,8 +131,8 @@
         var rect = mapElement.getBoundingClientRect();
         var containerWidth = rect.width;
         var containerHeight = rect.height;
-        x = Math.floor((event.clientX - containerWidth) / containerWidth * 512) - 448;
-        y = Math.floor((event.clientY - containerHeight) / containerHeight * 512) - 704;
+        x = Math.floor((event.clientX - rect.left) / containerWidth * 512) - 448;
+        y = Math.floor((event.clientY - rect.top) / containerHeight * 512) - 704;
         if (x >= -448 && x <= 64 && y >= -704 && y <= -192) {
           coordinatesElement.textContent = 'X座標: ' + x + ', Z座標: ' + y;
           Message.classList.add('hidden');
@@ -141,8 +141,8 @@
           circleElement.remove();
         }
         circleElement.classList.add('circle');
-        circleElement.style.left = Math.floor((event.clientX - 5 - containerWidth)) + 'px'; /* 変更: マップ要素の位置を考慮する */
-        circleElement.style.top = Math.floor((event.clientY - 5 - containerHeight)) + 'px'; /* 変更: マップ要素の位置を考慮する */
+        circleElement.style.left = (event.clientX - 5 - rect.left) + 'px'; /* 変更: マップ要素の位置を考慮する */
+        circleElement.style.top = (event.clientY - 5 - rect.top) + 'px'; /* 変更: マップ要素の位置を考慮する */
         container.appendChild(circleElement);
       }
     });
@@ -151,8 +151,8 @@
       var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
         TruecircleElement.classList.add('Truecircle');
-        TruecircleElement.style.left = (containerWidth + Tx + 448) + 'px';
-        TruecircleElement.style.top = (containerHeight + Ty + 704) + 'px';
+        TruecircleElement.style.left = (rect.left + Tx + 448) + 'px';
+        TruecircleElement.style.top = (rect.top + Tx + 704) + 'px';
         container.appendChild(TruecircleElement);
         rdButton.style.display = 'block';
       });
