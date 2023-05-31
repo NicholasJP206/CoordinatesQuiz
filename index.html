@@ -124,6 +124,8 @@
 			var rdButton = document.getElementById('rd-button');
       var container = document.getElementById('container');
       var circleElement = document.createElement('div');
+      var TruecircleElement = document.createElement('div');
+
       
       document.addEventListener('click', function(event) {
         var rect = mapElement.getBoundingClientRect();
@@ -148,10 +150,9 @@
 		okButton.addEventListener('click', function() {
       var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
-        var TruecircleElement = document.createElement('div');
         TruecircleElement.classList.add('Truecircle');
-        TruecircleElement.style.left = Tx + 448 + 'px';
-        TruecircleElement.style.top = Ty + 704 + 'px';
+        TruecircleElement.style.left = (Tx + 448) + 'px';
+        TruecircleElement.style.top = (Ty + 704) + 'px';
         container.appendChild(TruecircleElement);
         rdButton.style.display = 'block';
       });
