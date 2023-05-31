@@ -124,31 +124,31 @@
 			var rdButton = document.getElementById('rd-button');
       var container = document.getElementById('container');
       var circleElement = document.createElement('div');
-      var TruecircleElement = document.createElement('div');
-
-    document.addEventListener('click', function(event) {
-    var rect = mapElement.getBoundingClientRect();
-    var containerWidth = rect.width;
-    var containerHeight = rect.height;
-    x = Math.floor((event.clientX - rect.left) / containerWidth * 512) - 448;
-    y = Math.floor((event.clientY - rect.top) / containerHeight * 512) - 704;
-    if (x >= -448 && x <= 64 && y >= -704 && y <= -192) {
-        coordinatesElement.textContent = 'X座標: ' + x + ', Z座標: ' + y;
-        Message.classList.add('hidden');
+      
+      document.addEventListener('click', function(event) {
+        var rect = mapElement.getBoundingClientRect();
+        var containerWidth = rect.width;
+        var containerHeight = rect.height;
+        x = Math.floor((event.clientX - rect.left) / containerWidth * 512) - 448;
+        y = Math.floor((event.clientY - rect.top) / containerHeight * 512) - 704;
+        if (x >= -448 && x <= 64 && y >= -704 && y <= -192) {
+          coordinatesElement.textContent = 'X座標: ' + x + ', Z座標: ' + y;
+          Message.classList.add('hidden');
         okButton.style.display = 'block';
         if (circleElement) {
           circleElement.remove();
         }
-          circleElement.classList.add('circle');
-          circleElement.style.left = (event.clientX - 5 - rect.left) + 'px'; /* 変更: マップ要素の位置を考慮する */
-          circleElement.style.top = (event.clientY - 5 - rect.top) + 'px'; /* 変更: マップ要素の位置を考慮する */
-          container.appendChild(circleElement);
-        }
+        circleElement.classList.add('circle');
+        circleElement.style.left = (event.clientX - 5 - rect.left) + 'px'; /* 変更: マップ要素の位置を考慮する */
+        circleElement.style.top = (event.clientY - 5 - rect.top) + 'px'; /* 変更: マップ要素の位置を考慮する */
+        container.appendChild(circleElement);
+      }
     });
-			
+    
 		okButton.addEventListener('click', function() {
-        var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
+      var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
+        var TruecircleElement = document.createElement('div');
         TruecircleElement.classList.add('Truecircle');
         TruecircleElement.style.left = Tx + 448 + 'px';
         TruecircleElement.style.top = Ty + 704 + 'px';
