@@ -88,6 +88,7 @@
   <script>
     var x,y;
 		var Tx,Ty;
+    var blueCircleElement;
     function getRandomElement() {
       fetch('coords.json') 
 
@@ -142,7 +143,7 @@
 		okButton.addEventListener('click', function() {
       var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
       rdButton.style.display = 'block';
-      var blueCircleElement = document.createElement('div');
+      blueCircleElement = document.createElement('div');
       blueCircleElement.classList.add('circle');
       blueCircleElement.style.backgroundColor = 'blue';
       blueCircleElement.style.left = ((Number(Tx) + 448) / 512 * rect.width - 5) + 'px';
