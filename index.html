@@ -152,7 +152,7 @@
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
         TruecircleElement.classList.add('Truecircle');
         TruecircleElement.style.left = (rect.left + Tx + 448) + 'px';
-        TruecircleElement.style.top = (rect.top + Tx + 704) + 'px';
+        TruecircleElement.style.top = (rect.top + Ty + 704) + 'px';
         container.appendChild(TruecircleElement);
         rdButton.style.display = 'block';
       });
