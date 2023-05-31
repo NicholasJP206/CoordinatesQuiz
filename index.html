@@ -103,8 +103,8 @@
 				.catch(error => {
 				console.error('Error:', error);
 			});
-      if (circleElement) {
-          circleElement.remove();
+      if (bluecircleElement) {
+        bluecircleElement.remove();
       }
 		}
 		window.onload = getRandomElement;
@@ -146,8 +146,8 @@
       var blueCircleElement = document.createElement('div');
       blueCircleElement.classList.add('circle');
       blueCircleElement.style.backgroundColor = 'blue';
-      blueCircleElement.style.left = Math.floor(((Tx + 448) / 512 * rect.width - 5)) + 'px';
-      blueCircleElement.style.top = Math.floor(((-400 + 704) / 512 * rect.height - 5)) + 'px';
+      blueCircleElement.style.left = ((Number(Tx) + 448) / 512 * rect.width - 5) + 'px';
+      blueCircleElement.style.top = ((Number(Ty) + 704) / 512 * rect.height - 5) + 'px';
       container.appendChild(blueCircleElement);
       });
     });
