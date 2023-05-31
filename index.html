@@ -71,36 +71,45 @@
       border-radius: 50%;
       background-color: red;
     }
-    .star {
-      position: absolute;
+
+    #star-five {
+      margin: 10px 0;
+      position: relative;
+      display: block;
+      color: yellow;
       width: 0px;
       height: 0px;
-      border-bottom: 10px solid yellow;
-      border-right: 15px solid transparent;
-      border-left: 15px solid transparent;
-      transform: rotate(-37deg);
+      border-right: 20px solid transparent;
+      border-bottom: 14px solid yellow;
+      border-left: 20px solid transparent;
+      transform: rotate(35deg);
     }
-
-    .star::before {
-      content: "";
+    #star-five:before {
+      border-bottom: 16px solid yellow;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
       position: absolute;
-      top: 0;
-      left: -15px;
-      border-bottom: 10px solid red;
-      border-right: 15px solid transparent;
-      border-left: 15px solid transparent;
-      transform: rotate(-71.5deg);
+      height: 0;
+      width: 0;
+      top: -9px;
+      left: -13px;
+      display: block;
+      content: '';
+      transform: rotate(-35deg);
     }
-
-    .star::after {
-      content: "";
+    #star-five:after {
       position: absolute;
-      top: 0;
-      left: -15px;
-      border-bottom: 10px solid blue;
-      border-right: 15px solid transparent;
-      border-left: 15px solid transparent;
-      transform: rotate(71.5deg);
+      display: block;
+      color: yellow;
+      top: 0.6px;
+      left: -21px;
+      width: 0px;
+      height: 0px;
+      border-right: 20px solid transparent;
+      border-bottom: 14px solid yellow;
+      border-left: 20px solid transparent;
+      transform: rotate(-70deg);
+      content: '';
     }
   </style>
 </head>
@@ -178,7 +187,7 @@
         starElement.remove();
       }
       starElement = document.createElement('div');
-      starElement.classList.add('star');
+      starElement.classList.add('star-five');
       starElement.style.backgroundColor = 'yellow';
       starElement.style.borderRadius = 10 + '%';
       starElement.style.left = ((Number(Tx) + 448) / 512 * rect.width - 5) + 'px';
