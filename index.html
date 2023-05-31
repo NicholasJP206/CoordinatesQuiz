@@ -146,8 +146,8 @@
         var blueCircleElement = document.createElement('div');
         blueCircleElement.classList.add('circle');
         blueCircleElement.style.backgroundColor = 'blue';
-        blueCircleElement.style.left = (Tx + 448 - 5) + 'px';
-        blueCircleElement.style.top = (Ty + 704 - 5) + 'px';
+        blueCircleElement.style.left = (Tx + 448 - rect.left - 5) + 'px';
+        blueCircleElement.style.top = (Ty + 704 - rect.top - 5) + 'px';
         container.appendChild(blueCircleElement);
       });
     });
