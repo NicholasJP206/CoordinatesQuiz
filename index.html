@@ -119,6 +119,7 @@
   <script>
     var x,y;
 		var Tx,Ty;
+    var cx,cy;
     var starElement;
     function getRandomElement() {
       fetch('coords.json') 
@@ -165,8 +166,10 @@
           circleElement.remove();
         }
         circleElement.classList.add('circle');
-        circleElement.style.left = (event.clientX - 5 - rect.left) + 'px'; /* 変更: マップ要素の位置を考慮する */
-        circleElement.style.top = (event.clientY - 5 - rect.top) + 'px'; /* 変更: マップ要素の位置を考慮する */
+        cx = (event.clientX - 5 - rect.left) + 'px'; 
+        cy = (event.clientY - 5 - rect.top) + 'px'; 
+        circleElement.style.left = cx; 
+        circleElement.style.top = cy; 
         container.appendChild(circleElement);
       }
     });
@@ -187,8 +190,8 @@
           circleElement.remove();
       }
       circleElement.classList.add('circle');
-      circleElement.style.left = (event.clientX - 5 - rect.left) + 'px'; /* 変更: マップ要素の位置を考慮する */
-      circleElement.style.top = (event.clientY - 5 - rect.top) + 'px'; /* 変更: マップ要素の位置を考慮する */
+      circleElement.style.left = cx;
+      circleElement.style.top = cy;
       container.appendChild(circleElement);
 
       setTimeout(function() {
