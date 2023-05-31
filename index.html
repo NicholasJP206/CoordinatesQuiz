@@ -150,11 +150,11 @@
 		okButton.addEventListener('click', function() {
       var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
         alert('誤差は ' + dist + ' mです．正解はx=' + Tx + ',z=' + Ty);
+        rdButton.style.display = 'block';
         TruecircleElement.classList.add('Truecircle');
         TruecircleElement.style.left = (rect.left + Tx + 448) + 'px';
         TruecircleElement.style.top = (rect.top + Ty + 704) + 'px';
         container.appendChild(TruecircleElement);
-        rdButton.style.display = 'block';
       });
     });
 
