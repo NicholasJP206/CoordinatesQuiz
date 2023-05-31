@@ -127,10 +127,10 @@
       var TruecircleElement = document.createElement('div');
 
       
-      var rect = mapElement.getBoundingClientRect();
-      var containerWidth = rect.width;
-      var containerHeight = rect.height;
       document.addEventListener('click', function(event) {
+        var rect = mapElement.getBoundingClientRect();
+        var containerWidth = rect.width;
+        var containerHeight = rect.height;
         x = Math.floor((event.clientX - containerWidth) / containerWidth * 512) - 448;
         y = Math.floor((event.clientY - containerHeight) / containerHeight * 512) - 704;
         if (x >= -448 && x <= 64 && y >= -704 && y <= -192) {
