@@ -141,8 +141,8 @@
           circleElement.remove();
         }
         circleElement.classList.add('circle');
-        circleElement.style.left = (event.clientX - 5 - containerWidth) + 'px'; /* 変更: マップ要素の位置を考慮する */
-        circleElement.style.top = (event.clientY - 5 - containerHeight) + 'px'; /* 変更: マップ要素の位置を考慮する */
+        circleElement.style.left = Math.floor((event.clientX - 5 - containerWidth)) + 'px'; /* 変更: マップ要素の位置を考慮する */
+        circleElement.style.top = Math.floor((event.clientY - 5 - containerHeight)) + 'px'; /* 変更: マップ要素の位置を考慮する */
         container.appendChild(circleElement);
       }
     });
