@@ -143,6 +143,9 @@
 		okButton.addEventListener('click', function() {
       var dist = Math.floor(Math.sqrt((Tx - x) * (Tx - x) + (Ty - y) * (Ty - y)));
       rdButton.style.display = 'block';
+      if (blueCircleElement) {
+        blueCircleElement.remove();
+      }
       blueCircleElement = document.createElement('div');
       blueCircleElement.classList.add('circle');
       blueCircleElement.style.backgroundColor = 'blue';
