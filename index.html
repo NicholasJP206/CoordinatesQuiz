@@ -120,6 +120,7 @@
     var x,y;
 		var Tx,Ty;
     var cx,cy;
+    var circleElement;
     var starElement;
     function getRandomElement() {
       fetch('coords.json') 
@@ -149,7 +150,7 @@
 			var okButton = document.getElementById('ok-button');
 			var rdButton = document.getElementById('rd-button');
       var container = document.getElementById('container');
-      var circleElement = document.createElement('div');
+      circleElement = document.createElement('div');
 
       var rect;
       document.addEventListener('click', function(event) {
